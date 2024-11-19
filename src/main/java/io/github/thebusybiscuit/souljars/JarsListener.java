@@ -30,7 +30,7 @@ public class JarsListener implements Listener {
     @EventHandler
     public void onKill(EntityDeathEvent e) {
         Map<EntityType, Integer> mobs = plugin.getRequiredSouls();
-        if (!mobs.containsKey(e.getEntityType()) || e.getEntity().getKiller() == null) {
+        if (e.getEntity().fromMobSpawner() || !mobs.containsKey(e.getEntityType()) || e.getEntity().getKiller() == null) {
             return;
         }
 
